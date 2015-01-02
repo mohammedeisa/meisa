@@ -41,7 +41,7 @@
     "suggest": {
     },
     "autoload": {
-        "Meisa\\MenuBundle" : "src"
+        "psr-4": { "Meisa\\MenuBundle\\": "" }
     },
     "extra": {
         "branch-alias": {
