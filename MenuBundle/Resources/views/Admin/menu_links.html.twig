@@ -1,0 +1,85 @@
+<div class="box-body">
+    <input type="hidden" name="object_id" value="{{ object_id }}">
+    {% if links|length>0 %}
+        {% for linkKey,link  in links %}
+            {% set main_loop_index=loop.index %}
+            {% if linkKey=='list_routes'and links['list_routes']|length>0 %}
+                <div class="panel box box-primary tabssof_box">
+                    <div class="box-header">
+                        <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_list">
+                                Main links
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse_list" class="panel-collapse collapse">
+                        <div class="box-body">
+                            {% for list_route_key,list_route in  link %}
+                                <div class="menu-link">
+                                    <input type="checkbox" class="MenuItemSelector"
+                                           name="is_link_selected_{{ main_loop_index~loop.index }}">
+                                    <input type="hidden" value="{{ list_route['url'] }}"
+                                           name="new_link_{{ main_loop_index~loop.index }}">
+                                    <input type="hidden" value="{{ list_route['display_name'] }}"
+                                           name="link_display_{{ main_loop_index~loop.index }}">
+                                    <a href="#" link="{{ list_route['url'] }}">{{ list_route['display_name'] }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if linkKey=='show_routes' and links['show_routes']|length>0 %}
+                <div class="panel box box-primary tabssof_box">
+                    {% for key,show_route_group in links['show_routes'] %}
+                        {% if show_route_group['routes'] is defined %}
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapse_{{ key }}_show">
+                                        {{ show_route_group['display_name'] }}
+                                    </a>
+                                </h4>
+                            </div>
+                            {% if show_route_group['routes'] is defined %}
+                                <div id="collapse_{{ key }}_show" class="panel-collapse collapse">
+                                    <div class="box-body">
+                                        {% for show_route in show_route_group['routes'] %}
+                                            <div class="menu-link">
+                                                <input type="checkbox" class="MenuItemSelector"
+                                                       name="is_link_selected_{{ main_loop_index~loop.index }}">
+                                                <input type="hidden" value="{{ show_route['url'] }}"
+                                                       name="new_link_{{ main_loop_index~loop.index }}">
+                                                <input type="hidden" value="{{ show_route['link_display'] }}"
+                                                       name="link_display_{{ main_loop_index~loop.index }}">
+                                                <a href="#"
+                                                   link="{{ show_route['url'] }}">{{ show_route['link_display'] }}</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <input type="hidden" name="links_count">
+
+</div>
+<script>
+
+
+    $('input.MenuItemSelector').on('ifChecked', function (event) {
+        $('input[name="links_count"]').val($('input:checkbox.MenuItemSelector:checked').length);
+
+    });
+
+    $('input.MenuItemSelector').on('ifUnchecked', function (event) {
+        $('input[name="links_count"]').val($('input:checkbox.MenuItemSelector:checked').length);
+    });
+
+</script>
+

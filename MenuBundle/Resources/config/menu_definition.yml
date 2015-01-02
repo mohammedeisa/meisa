@@ -1,0 +1,60 @@
+services:
+
+  meisa.menu.config:
+      class: Meisa\MenuBundle\Admin\MenuConfigAdmin
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: "Meisa", label: "Menu Config" }
+      arguments:
+          - ~
+          - Meisa\MenuBundle\Entity\MenuConfig
+          - ~
+      calls:
+          - [ setTranslationDomain, [MeisaMenuBundle]]
+
+  meisa.menu.config.parameters:
+      class: Meisa\MenuBundle\Admin\MenuConfigParameterAdmin
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: "Meisa", label: "Menu Config Parameters", show_in_dashboard: false }
+      arguments:
+          - ~
+          - Meisa\MenuBundle\Entity\MenuConfigParameter
+          - ~
+      calls:
+          - [ setTranslationDomain, [MeisaMenuBundle]]
+
+
+
+  meisa.menu.name:
+      class: Meisa\MenuBundle\Admin\MenuAdmin
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: "Meisa", label: "Menu" }
+      arguments:
+          - ~
+          - Meisa\MenuBundle\Entity\Menu
+          - MeisaMenuBundle:MenuAdminCRUD
+      calls:
+          - [ setTranslationDomain, [MeisaMenuBundle]]
+
+  meisa.menu:
+      class: Meisa\MenuBundle\Admin\MenuItemAdmin
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: "Meisa", label: "Menu Items" , show_in_dashboard: false }
+      arguments:
+          - ~
+          - Meisa\MenuBundle\Entity\MenuItem
+          - MeisaMenuBundle:AdminCRUD
+      calls:
+          - [ setTranslationDomain, [MeisaMenuBundle]]
+
+  meisa_menu:
+      class: Meisa\MenuBundle\Extension\MenuTwigExtension
+      arguments:
+            em: "@doctrine.orm.entity_manager"
+            container: "@service_container"
+      tags:
+          - { name: twig.extension }
+  meisa.link.type:
+      class: Meisa\MenuBundle\Form\Type\MeisaLinkFieldType
+      tags:
+          - { name: form.type, alias: meisa_link }
+

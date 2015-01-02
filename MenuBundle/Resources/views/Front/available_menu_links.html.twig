@@ -1,0 +1,69 @@
+<div class="menu_links">
+    <div class="">
+
+        <div class="box box-solid">
+            <div class="box-body">
+                <div class="box-group menu-links" id="accordion">
+                    {% if links|length>0 %}
+                    {% for linkKey,link  in links %}
+                    {% set main_loop_index=loop.index %}
+                    {% if linkKey=='list_routes' %}
+                    <div class="panel box box-primary"></div>
+                    <div class="box-header">
+                        <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_list">
+                                Main links
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse_list" class="panel-collapse collapse in">
+                        <div class="box-body">
+                            {% for list_route_key,list_route in  link %}
+                                <div class="menu-link">
+                                    <i class="fa fa-fw fa-link"></i>
+                                    <a href="#"  class="text-muted" onclick="updateLink(this)" link="{{ list_route['url'] }}">{{ list_route['display_name'] }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+                {% endif %}
+                {% if linkKey=='show_routes' %}
+                    <div class="panel box box-primary">
+                        {% for key,show_route_group in links['show_routes'] %}
+                            {% if show_route_group['routes'] is defined %}
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapse_{{ key }}_show">
+                                            {{ show_route_group['display_name'] }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                {% if show_route_group['routes'] is defined %}
+                                    <div id="collapse_{{ key }}_show" class="panel-collapse collapse">
+                                        <div class="box-body">
+                                            {% for show_route in show_route_group['routes'] %}
+                                                <div class="menu-link">
+                                                    <i class="fa fa-fw fa-link"></i>
+                                                    <a href="#" onclick="updateLink(this)" class="text-muted"
+                                                       link="{{ show_route['url'] }}">{{ show_route['link_display'] }}</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
