@@ -53,6 +53,9 @@ Installation
 That's it !!!
 
 ## How to Use Meisa Menu ?
+--------------------------------------
+How to Use Meisa Menu ?
+------------------------
 - the bundle registers two items in sonata sidebar (Menu config , Menu)
 At first you have to register all routes you need to use later in your frontend menus.
 
