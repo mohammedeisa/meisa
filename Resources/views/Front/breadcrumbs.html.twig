@@ -1,0 +1,6 @@
+<ul class="breadcrumb-nav clearfix">
+<li><a href="{{ path('home') }}" class="link-sm">Home<span></span></a></li>
+{% for item in breadcrumb_items %}
+    <li><a href="{{ item.link }}" class="link-sm">{{ item.title }}<span></span></a></li>
+{% endfor %}
+</ul>

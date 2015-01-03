@@ -1,0 +1,20 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        {% if object.getLvl()==0 %}
+            <i class="glyphicon glyphicon-list"></i>
+        {% else %}
+
+            {% for i in 0..object.getLvl() %}
+                &nbsp;&nbsp;
+            {% endfor %}
+            {% if object.getChildren()|length==0 %}
+                <i class="glyphicon glyphicon-minus-sign"></i>
+            {% else %}
+                <i class="glyphicon glyphicon-plus-sign"></i>
+            {% endif %}
+        {% endif %}
+        {{ object.getTitle() }}
+    </div>
+{% endblock %}

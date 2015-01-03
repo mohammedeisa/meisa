@@ -1,0 +1,51 @@
+{
+    "name": "mohammedeisa/menu_bundle",
+    "type": "symfony-bundle",
+    "description": "Meisa Menu bundle",
+    "keywords": ["Menu generator", "meisa"],
+    "homepage": "https://github.com/mohammedeisa/menu_bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohammed Eisa",
+            "email": "mohammed.ezz.2011@gmail.com",
+            "homepage": "https://github.com/mohammedeisa/menu_bundle"
+        },
+        {
+            "name": "Meisa menu bundle",
+            "homepage": "https://github.com/mohammedeisa/menu_bundle"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "2.6.*",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1.2",
+        "twig/extensions": "~1.0",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~3.0",
+        "sensio/framework-extra-bundle": "~3.0",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "sonata-project/admin-bundle": "~2.3",
+        "sonata-project/block-bundle": "~2.2@dev",
+        "sonata-project/doctrine-extensions": "~1@dev",
+        "sonata-project/doctrine-orm-admin-bundle": "~2.3",
+        "sonata-project/formatter-bundle": "~2.3@dev",
+        "stof/doctrine-extensions-bundle": "~1.1@dev",
+        "stof/doctrine-extensions-bundle": "~1.1@dev",
+        "gedmo/doctrine-extensions": "2.3.*@dev"
+    },
+    "require-dev": {
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": { "Meisa\\MenuBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

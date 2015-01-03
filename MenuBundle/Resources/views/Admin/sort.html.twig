@@ -1,0 +1,12 @@
+{% block field %}
+    <span id="sort-arrows-container">
+        {% spaceless %}
+            <a href="{{ path('page_tree_up', {'id': object.id}) }}">
+                <i class="glyphicon glyphicon-upload"></i>
+            </a>
+            <a href="{{ path('page_tree_down', {'id': object.id}) }}">
+                <i class="glyphicon glyphicon-download"></i>
+            </a>
+        {% endspaceless %}
+    </span>
+{% endblock %}
