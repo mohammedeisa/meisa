@@ -1,19 +1,19 @@
 {
-    "name": "mohammedeisa/menu_bundle",
+    "name": "mohammedeisa/menu-bundle",
     "type": "symfony-bundle",
     "description": "Meisa Menu bundle",
     "keywords": ["Menu generator", "meisa"],
-    "homepage": "https://github.com/mohammedeisa/menu_bundle",
+    "homepage": "https://github.com/mohammedeisa/menu-bundle",
     "license": "MIT",
     "authors": [
         {
             "name": "Mohammed Eisa",
             "email": "mohammed.ezz.2011@gmail.com",
-            "homepage": "https://github.com/mohammedeisa/menu_bundle"
+            "homepage": "https://github.com/mohammedeisa/menu-bundle"
         },
         {
             "name": "Meisa menu bundle",
-            "homepage": "https://github.com/mohammedeisa/menu_bundle"
+            "homepage": "https://github.com/mohammedeisa/menu-bundle"
         }
     ],
     "require": {

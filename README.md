@@ -1,5 +1,3 @@
-meisa
-=====
 MeisaMenuBundle - The Ultimate Menu Bundle
 ========================================================
 
