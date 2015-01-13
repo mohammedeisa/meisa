@@ -36,6 +36,7 @@ class MenuItemAdmin extends Admin
             ->addOrderBy('p.lft', 'ASC');
         $formMapper
             ->add('title')
+            ->add('alternativeHtml')
             ->add('itemClass')
             ->add('itemId')
             ->add('link', 'meisa_link', array())

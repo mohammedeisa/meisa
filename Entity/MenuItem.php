@@ -53,6 +53,11 @@ class MenuItem
      */
     private $itemId;
 
+    /**
+     * @var string
+     * @ORM\Column(name="alternative_html", type="text")
+     */
+    private $alternativeHtml;
 
     /**
      * @var string
@@ -454,6 +459,22 @@ class MenuItem
     public function setItemId($itemId)
     {
         $this->itemId = $itemId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlternativeHtml()
+    {
+        return $this->alternativeHtml;
+    }
+
+    /**
+     * @param string $alternativeHtml
+     */
+    public function setAlternativeHtml($alternativeHtml)
+    {
+        $this->alternativeHtml = $alternativeHtml;
     }
 
 
