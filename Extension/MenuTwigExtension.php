@@ -50,9 +50,8 @@ class MenuTwigExtension extends \Twig_Extension
             },
             'childClose' => '</li>',
             'nodeDecorator' => function ($node) {
-                return '<a href="' . $node['link'] . '">' .
-                ($node['alternativeHtml']) ? $node['alternativeHtml'] : $node['title']
-                    . '</a>';
+                $innerHtml= ($node['alternativeHtml']) ? $node['alternativeHtml'] : $node['title'] ;
+                return '<a href="' . $node['link'] . '">' . $innerHtml . '</a>';
             }
         );
         $menu = $repo->buildTree($query->getArrayResult(), $options);
