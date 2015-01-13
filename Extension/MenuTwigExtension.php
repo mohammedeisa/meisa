@@ -31,13 +31,13 @@ class MenuTwigExtension extends \Twig_Extension
 
     public function show_menu($menu_slug)
     {
-        $repo = $this->em->getRepository('MeisaMenuBundle:Menu');
-        $menuName = $this->em ->getRepository('MeisaMenuBundle:MenuName')->findOneBy(array('slug' => $menu_slug));
+        $repo = $this->em->getRepository('MeisaMenuBundle:MenuItem');
+        $menuName = $this->em ->getRepository('MeisaMenuBundle:Menu')->findOneBy(array('slug' => $menu_slug));
         $menu_id=$menuName->getId();
         $query = $this->em
             ->createQueryBuilder()
             ->select('node')
-            ->from('MeisaMenuBundle:Menu', 'node')
+            ->from('MeisaMenuBundle:MenuItem', 'node')
             ->where('node.menu =:menu')
             ->orderBy('node.position', 'ASC')
             ->setParameters(array('menu'=>$menu_id))->getQuery();
