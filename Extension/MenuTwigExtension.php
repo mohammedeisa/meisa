@@ -45,7 +45,7 @@ class MenuTwigExtension extends \Twig_Extension
             'decorate' => true,
             'rootOpen' => '<ul class="'.$menu->getMenuClass().'">',
             'rootClose' => '</ul>',
-            'childOpen' => function($node){'return <li class="'.$node['itemClass'].'" id="'.$node['itemId'].'">';},
+            'childOpen' => function($node){return '<li class="'.$node['itemClass'].'" id="'.$node['itemId'].'">';},
             'childClose' => '</li>',
             'nodeDecorator' => function ($node) {
                 return '<a href="' . $node['link'] . '">' . $node['title'] . '</a>';
