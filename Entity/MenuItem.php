@@ -44,6 +44,18 @@ class MenuItem
 
     /**
      * @var string
+     * @ORM\Column(name="item_class", type="string", length=255)
+     */
+    private $itemClass;
+    /**
+     * @var string
+     * @ORM\Column(name="item_id", type="string", length=255)
+     */
+    private $itemId;
+
+
+    /**
+     * @var string
      *
      * @ORM\ManyToOne(targetEntity="Meisa\MenuBundle\Entity\Menu" , cascade={"all"},inversedBy="menuItems" )
      * @ORM\JoinColumn(name="menu_id", referencedColumnName="id", onDelete="SET NULL")
@@ -410,6 +422,38 @@ class MenuItem
     public function setMenu($menu)
     {
         $this->menu = $menu;
+    }
+
+    /**
+     * @return string
+     */
+    public function getItemClass()
+    {
+        return $this->itemClass;
+    }
+
+    /**
+     * @param string $itemClass
+     */
+    public function setItemClass($itemClass)
+    {
+        $this->itemClass = $itemClass;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemId()
+    {
+        return $this->itemId;
+    }
+
+    /**
+     * @param mixed $itemId
+     */
+    public function setItemId($itemId)
+    {
+        $this->itemId = $itemId;
     }
 
 

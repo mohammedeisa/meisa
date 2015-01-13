@@ -24,6 +24,30 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 class MenuAdmin extends Admin
 {
 
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->with('basic', array('class' => 'half-size'))
+            ->add('name')
+            ->add('menuClass')
+            ->add('enabled', null, array('required' => true, 'data' => false))
+            ->add('menuItems', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'position',
+                'link_parameters' => array('context' => 'default'),
+            ))
+            ->end();
+    }
+
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -58,28 +82,6 @@ class MenuAdmin extends Admin
             ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public $test;
-
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $formMapper
-            ->with('basic', array('class' => 'half-size'))
-            ->add('name')
-            ->add('enabled', null, array('required' => true, 'data' => false))
-            ->add('menuItems', 'sonata_type_collection', array(
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-                'link_parameters' => array('context' => 'default'),
-            ))
-            ->end();
-    }
 
     public function getTemplate($name)
     {
@@ -94,12 +96,12 @@ class MenuAdmin extends Admin
     }
 
     public function preUpdate($menuName)
-      {
-          $menuItems=$menuName->getMenuItems();
-          $menuName->setMenuItems(new ArrayCollection());
+    {
+        $menuItems = $menuName->getMenuItems();
+        $menuName->setMenuItems(new ArrayCollection());
 
-          foreach ($menuItems as $menuItem) {
-              $menuName->addMenuItems($menuItem);
-          }
-      }
+        foreach ($menuItems as $menuItem) {
+            $menuName->addMenuItems($menuItem);
+        }
+    }
 }

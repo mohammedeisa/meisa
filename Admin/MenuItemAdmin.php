@@ -22,13 +22,33 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
  */
 class MenuItemAdmin extends Admin
 {
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+
+        $repository_ = $this->getModelManager()->getEntityManager($this->getClass())->getRepository($this->getClass());
+        $repository = $repository_->createQueryBuilder('p')
+            ->addOrderBy('p.position', 'ASC')
+            ->addOrderBy('p.root', 'ASC')
+            ->addOrderBy('p.lft', 'ASC');
+        $formMapper
+            ->add('title')
+            ->add('itemClass')
+            ->add('itemId')
+            ->add('link', 'meisa_link', array())
+            ->add('parent')
+            ->add('position');
+    }
+
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $repository = $this->getModelManager()->getEntityManager($this->getClass())->getRepository($this->getClass());
         $repository = $repository->createQueryBuilder('p')
-            ->addOrderBy('p.lft', 'ASC')
-        ;
+            ->addOrderBy('p.lft', 'ASC');
 
         $datagridMapper
             ->add('parent', 'doctrine_orm_callback', array(
@@ -129,27 +149,6 @@ class MenuItemAdmin extends Admin
     }
 
 
-    /**
-     * {@inheritdoc}
-     */
-
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-
-        $repository_ = $this->getModelManager()->getEntityManager($this->getClass())->getRepository($this->getClass());
-        $repository = $repository_->createQueryBuilder('p')
-            ->addOrderBy('p.position', 'ASC')
-            ->addOrderBy('p.root', 'ASC')
-            ->addOrderBy('p.lft', 'ASC');
-        $formMapper
-            ->add('title')
-            ->add('link', 'meisa_link', array())
-            ->add('parent')
-            ->add('position')
-        ;
-    }
-
-
     public function getTemplate($name)
     {
         switch ($name) {
@@ -167,11 +166,12 @@ class MenuItemAdmin extends Admin
         $query = parent::createQuery($context);
         // this is the queryproxy, you can call anything you could call on the doctrine orm QueryBuilder
         $query
-            ->addOrderBy($query->getRootAlias() . '.lft', 'ASC')
-        ;
+            ->addOrderBy($query->getRootAlias() . '.lft', 'ASC');
         return $query;
     }
-    public function getFormTheme() {
+
+    public function getFormTheme()
+    {
         return array('MeisaMenuBundle:Form:meisa_link_field.html.twig');
     }
 }

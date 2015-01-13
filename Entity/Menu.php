@@ -39,6 +39,20 @@ class Menu
      */
     private $links;
 
+
+    /**
+     * @var string
+     * @ORM\Column(name="menu_class", type="string", length=255)
+     */
+    private $menuClass;
+
+
+    /**
+     * @var string
+     * @ORM\Column(name="menu_id", type="string", length=255)
+     */
+    private $menuId;
+
     /**
      * @var boolean
      *
@@ -233,6 +247,22 @@ class Menu
     public function prePersist()
     {
         $this->slug = str_replace(" ", "_", strtolower($this->name)) . '_' . $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMenuClass()
+    {
+        return $this->menuClass;
+    }
+
+    /**
+     * @param mixed $menuClass
+     */
+    public function setMenuClass($menuClass)
+    {
+        $this->menuClass = $menuClass;
     }
 
 }
