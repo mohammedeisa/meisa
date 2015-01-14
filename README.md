@@ -22,7 +22,7 @@ Installation
 2. Configure the bundle:
 	1. In config.yml, import this resource which contains the bundle configurations  .
     - { resource: @MeisaMenuBundle/Resources/config/menu_definition.yml }
-2. Add "- 'MeisaMenuBundle:Form:tabssoft_link_field.html.twig'" to the
+2. Add "- 'MeisaMenuBundle:Form:meisa_link_field.html.twig'" to the
     twig form resources like the following .
     twig:
         debug:            "%kernel.debug%"
@@ -30,7 +30,7 @@ Installation
 
         form:
             resources:
-                - 'MeisaMenuBundle:Form:tabssoft_link_field.html.twig'
+                - 'MeisaMenuBundle:Form:meisa_link_field.html.twig'
 
     This template is a helper in your application.I will explain it's benefits 		later in **Meisa link helper** .
 3. import the bundle routes by adding the following ti yor routing.yml

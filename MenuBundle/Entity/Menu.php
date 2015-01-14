@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * MenuName
- * @ORM\Table(name = "tabssoft_menu")
+ * @ORM\Table(name = "meisa_menu")
  * @ORM\Entity(repositoryClass="Meisa\MenuBundle\Entity\MenuNameRepository")
  * @ORM\HasLifecycleCallbacks()
  */

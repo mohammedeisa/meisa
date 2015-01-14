@@ -11,7 +11,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 /**
  * Menu
  * @Gedmo\Tree(type="nested")
- * @ORM\Table(name = "tabssoft_menu_item")
+ * @ORM\Table(name = "meisa_menu_item")
  * @ORM\Entity(repositoryClass="Meisa\MenuBundle\Entity\MenuRepository")
  * @ORM\HasLifecycleCallbacks()
  */

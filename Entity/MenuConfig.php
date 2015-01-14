@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MenuConfig
- * @ORM\Table(name = "tabssoft_menu_Config")
+ * @ORM\Table(name = "meisa_menu_Config")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */

@@ -36,11 +36,11 @@ class MenuItemAdmin extends Admin
             ->addOrderBy('p.lft', 'ASC');
         $formMapper
             ->add('title')
-            ->add('alternativeHtml')
-            ->add('itemClass')
-            ->add('itemId')
+            ->add('alternativeHtml',null,array('attr'=>array('style'=>'width:150px')))
+            ->add('itemClass',null,array('attr'=>array('style'=>'width:100px')))
+            ->add('itemId',null,array('attr'=>array('style'=>'width:100px')))
             ->add('link', 'meisa_link', array())
-            ->add('parent')
+            ->add('parent',null,array('attr'=>array('style'=>'width:150px')))
             ->add('position');
     }
 

@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * MenuName
- * @ORM\Table(name = "tabssoft_menu")
+ * @ORM\Table(name = "meisa_menu")
  * @ORM\Entity(repositoryClass="Meisa\MenuBundle\Entity\MenuNameRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -42,21 +42,21 @@ class Menu
 
     /**
      * @var string
-     * @ORM\Column(name="menu_class", type="string", length=255)
+     * @ORM\Column(name="menu_class", type="string", length=255 , nullable=true)
      */
     private $menuClass;
 
 
     /**
      * @var string
-     * @ORM\Column(name="menu_id", type="string", length=255)
+     * @ORM\Column(name="menu_id", type="string", length=255 , nullable=true)
      */
     private $menuId;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="enabled", type="boolean", options={"default":1})
+     * @ORM\Column(name="enabled", type="boolean", options={"default":1}, nullable=true)
      */
 
     private $enabled;
@@ -263,6 +263,22 @@ class Menu
     public function setMenuClass($menuClass)
     {
         $this->menuClass = $menuClass;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMenuId()
+    {
+        return $this->menuId;
+    }
+
+    /**
+     * @param string $menuId
+     */
+    public function setMenuId($menuId)
+    {
+        $this->menuId = $menuId;
     }
 
 }

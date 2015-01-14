@@ -61,6 +61,6 @@ class MenuTwigExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'tabssoft_menu';
+        return 'meisa_menu';
     }
 } 

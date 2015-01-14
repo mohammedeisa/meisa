@@ -22,7 +22,7 @@
                             {% for list_route_key,list_route in  link %}
                                 <div class="menu-link">
                                     <i class="fa fa-fw fa-link"></i>
-                                    <a href="#"  class="text-muted" onclick="updateLink(this)" link="{{ list_route['url'] }}">{{ list_route['display_name'] }}</a>
+                                    <a class="text-muted" onclick="updateLink(this)" link="{{ list_route['url'] }}">{{ list_route['display_name'] }}</a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -48,7 +48,7 @@
                                             {% for show_route in show_route_group['routes'] %}
                                                 <div class="menu-link">
                                                     <i class="fa fa-fw fa-link"></i>
-                                                    <a href="#" onclick="updateLink(this)" class="text-muted"
+                                                    <a onclick="updateLink(this)" class="text-muted"
                                                        link="{{ show_route['url'] }}">{{ show_route['link_display'] }}</a>
                                                 </div>
                                             {% endfor %}

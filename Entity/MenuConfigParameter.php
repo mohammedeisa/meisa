@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Parameter
- * @ORM\Table(name = "tabssoft_menu_config_parameter")
+ * @ORM\Table(name = "meisa_menu_config_parameter")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */

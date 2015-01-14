@@ -34,7 +34,8 @@ class MenuAdmin extends Admin
             ->with('basic', array('class' => 'half-size'))
             ->add('name')
             ->add('menuClass')
-            ->add('enabled', null, array('required' => true, 'data' => false))
+            ->add('menuId')
+            ->add('enabled')
             ->add('menuItems', 'sonata_type_collection', array(
                 'by_reference' => false,
                 'required' => false,

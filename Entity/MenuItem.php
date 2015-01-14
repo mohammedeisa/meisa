@@ -11,7 +11,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 /**
  * Menu
  * @Gedmo\Tree(type="nested")
- * @ORM\Table(name = "tabssoft_menu_item")
+ * @ORM\Table(name = "meisa_menu_item")
  * @ORM\Entity(repositoryClass="Meisa\MenuBundle\Entity\MenuRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -44,18 +44,18 @@ class MenuItem
 
     /**
      * @var string
-     * @ORM\Column(name="item_class", type="string", length=255)
+     * @ORM\Column(name="item_class", type="string", length=255 , nullable=true)
      */
     private $itemClass;
     /**
      * @var string
-     * @ORM\Column(name="item_id", type="string", length=255)
+     * @ORM\Column(name="item_id", type="string", length=255 , nullable=true)
      */
     private $itemId;
 
     /**
      * @var string
-     * @ORM\Column(name="alternative_html", type="text")
+     * @ORM\Column(name="alternative_html", type="text" , nullable=true)
      */
     private $alternativeHtml;
 
@@ -192,7 +192,7 @@ class MenuItem
      * @param Category $parent
      * @return Menu
      */
-    public function setParent(Menu $parent = null)
+    public function setParent(MenuItem $parent = null)
     {
         $this->parent = $parent;
 
