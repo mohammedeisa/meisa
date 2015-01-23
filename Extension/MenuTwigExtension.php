@@ -15,6 +15,7 @@ class MenuTwigExtension extends \Twig_Extension
 {
     protected $container;
     protected $em;
+    protected $currentUri;
 
     public function __construct($em, $container)
     {
@@ -31,6 +32,7 @@ class MenuTwigExtension extends \Twig_Extension
 
     public function show_menu($menu_slug)
     {
+        $this->currentUri = $_SERVER['REQUEST_URI'];
         $repo = $this->em->getRepository('MeisaMenuBundle:MenuItem');
         $menu = $this->em->getRepository('MeisaMenuBundle:Menu')->findOneBy(array('slug' => $menu_slug));
         $query = $this->em
@@ -46,11 +48,15 @@ class MenuTwigExtension extends \Twig_Extension
             'rootOpen' => '<ul class="' . $menu->getMenuClass() . '">',
             'rootClose' => '</ul>',
             'childOpen' => function ($node) {
-                return '<li class="' . $node['itemClass'] . '" id="' . $node['itemId'] . '">';
+                $class='';
+                if (str_replace('http://','',$node['link']) == $this->container->get('request')->server->get('SERVER_NAME').$this->currentUri){
+                    $class='active';
+                }
+                return '<li class="' .$class.' '. $node['itemClass'] . '" id="' . $node['itemId'] . '">';
             },
             'childClose' => '</li>',
             'nodeDecorator' => function ($node) {
-                $innerHtml= ($node['alternativeHtml']) ? $node['alternativeHtml'] : $node['title'] ;
+                $innerHtml = ($node['alternativeHtml']) ? $node['alternativeHtml'] : $node['title'];
                 return '<a href="' . $node['link'] . '">' . $innerHtml . '</a>';
             }
         );
