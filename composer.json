@@ -40,5 +40,10 @@
     },
     "autoload": {
         "psr-4": { "Meisa\\MenuBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
     }
 }
